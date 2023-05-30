@@ -1,0 +1,107 @@
+<!DOCTYPE html> 
+
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<title>Challenge - Encriptador</title>
+		<link rel="stylesheet" type="text/css" href="reset.css">
+		<link rel="stylesheet" type="text/css" href="style-enc.css">
+	</head>
+
+	<body>
+		<header>
+			<div class="caja">
+				<h1> Encriptador y desencriptador </h1>
+			</div>
+			
+		</header>
+
+		<main>
+			
+
+				<div class="entrada">
+				<label for="mensaje">Entrada: </label>
+				<textarea cols="70" rows="10" id="textoentrada" class="inp-padron" ></textarea>	
+				</div>
+
+				<div class="salida">
+				<label for="mensaje">Salida: </label>
+				<textarea cols="30" rows="10" id="textosalida" class="inp-padron" ></textarea>	
+				</div>
+
+				<div class="opciones">
+					<input type="button" value="Encriptar" class="enviar" onClick="btnencriptar();">
+
+				<input type="button" value="Desencriptar" class="enviar" onClick="btndesencriptar()">
+
+				<input type="button" value="Limpiar" class="enviar" onClick="btnlimpiar()">
+				</div>
+
+		</main>
+	
+		<footer>
+			<label for="mensaje">Creado por: Oliver Fabian Garcia Vertiz </label>
+		</footer>
+	</body>
+
+</html>
+
+<script type="text/javascript">
+	
+
+
+	function btnencriptar (){
+		const textoentrada = document.getElementById('textoentrada').value;
+		const txtsalida = document.getElementById('textosalida').value;
+		const textoencriptado = encriptar(textoentrada)
+		document.getElementById('textosalida').value=textoencriptado ;
+	}
+
+	function btndesencriptar (){
+		const textoentrada = document.getElementById('textoentrada').value;
+		const textodesencriptado = desencriptar(textoentrada)
+		document.getElementById('textosalida').value=textodesencriptado ;
+	}
+
+	function encriptar (strtexto){
+		let matriz = [["e","enter"],["i","imes"],["a","ai"],["o","ober"],["u","ufat"]];
+
+		strtexto = strtexto.toLowerCase();
+
+		for (var i=0; i < matriz.length; i++) {
+
+			if (strtexto.includes(matriz[i][0])) {
+
+				strtexto = strtexto.replaceAll(matriz[i][0],matriz[i][1])
+
+			}
+			
+		}
+
+		return strtexto
+
+	}
+
+	function desencriptar (strtexto){
+		let matriz = [["e","enter"],["i","imes"],["a","ai"],["o","ober"],["u","ufat"]];
+
+		strtexto = strtexto.toLowerCase();
+
+		for (var i=0; i < matriz.length; i++) {
+
+			if (strtexto.includes(matriz[i][1])) {
+
+				strtexto = strtexto.replaceAll(matriz[i][1],matriz[i][0])
+
+			}	
+		}
+		return strtexto
+	}
+
+	function btnlimpiar (){
+		document.getElementById('textoentrada').value="";
+		document.getElementById('textosalida').value="";
+	}
+	
+</script>
+
